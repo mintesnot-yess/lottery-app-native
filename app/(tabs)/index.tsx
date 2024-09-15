@@ -1,70 +1,166 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Button, StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { ThemedView } from "@/components/ThemedView";
+import { ThemedText } from "@/components/ThemedText";
+import { useEffect, useState } from "react";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+export default function App() {
+  const [currentTime, setCurrentTime] = useState("");
 
-export default function HomeScreen() {
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      setCurrentTime(now.toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View>
+      <ScrollView style={styles.Container}>
+        <LinearGradient colors={["#6100FF", "#DB00FF"]} style={styles.CardContainer}>
+          <ThemedView style={styles.CardDetail}>
+            <ThemedText style={{ color: "#fff", fontSize: 19 }}>Win up to </ThemedText>
+            <ThemedText style={{ paddingTop: 15, color: "#fff", fontSize: 40, fontWeight: "bold" }}>ET1000</ThemedText>
+
+            <Button title="play now" />
+          </ThemedView>
+          <ThemedView style={styles.CardCounting}>
+            <LinearGradient colors={["#DB00FF", "#6100FF"]} style={styles.CirculeCounter}>
+              <ThemedText style={{ color: "#fff", fontSize: 25, padding: 3 }}>{currentTime}</ThemedText>
+            </LinearGradient>
+          </ThemedView>
+        </LinearGradient>
+
+        <LinearGradient colors={["#9E08B7", "#DB00FF"]} style={styles.CardContainer}>
+          <ThemedView style={styles.ListContainer}>
+            <ThemedText style={{ fontSize: 20, color: "#fff", textAlign: "center", textTransform: "uppercase" }}>
+              Winner List
+            </ThemedText>
+
+            <ThemedView style={styles.WinnerList}>
+              <Image
+                source={require("@/assets/images/face18.jpg")}
+                style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
+              />
+
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.WinnerList}>
+              <Image
+                source={require("@/assets/images/face17.jpg")}
+                style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
+              />
+
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.WinnerList}>
+              <Image
+                source={require("@/assets/images/face6.jpg")}
+                style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
+              />
+
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+            </ThemedView>
+            <ThemedView style={styles.WinnerList}>
+              <Image
+                source={require("@/assets/images/face1.jpg")}
+                style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
+              />
+
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+            </ThemedView>
+          </ThemedView>
+        </LinearGradient>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  Container: {
+    width: "100%",
+    height: "100%"
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  CardContainer: {
+    width: "95%",
+    marginHorizontal: "auto",
+    marginVertical: 20,
+    paddingVertical: 20,
+
+    borderRadius: 10,
+    display: "flex",
+    flexDirection: "row"
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  CardDetail: {
+    flex: 1,
+    backgroundColor: "transparent",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 8
   },
+
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 10,
+    backgroundColor: "#fff"
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "#6100FF"
+  },
+  CardCounting: {
+    flex: 1,
+
+    backgroundColor: "transparent",
+
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  CirculeCounter: {
+    width: 130,
+    height: 130,
+    borderRadius: 100,
+    backgroundColor: "#6100FF",
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  ListContainer: {
+    flex: 1,
+    backgroundColor: "transparent",
+    display: "flex",
+    flexDirection: "column",
+    gap: 10
+  },
+  WinnerList: {
+    width: "95%",
+    margin: "auto",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+    padding: 5,
+
+    borderRadius: 5,
+    backgroundColor: "transparent",
+    borderWidth: 1,
+    borderColor: "#ffffff61"
+  }
 });
