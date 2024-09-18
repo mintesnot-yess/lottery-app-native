@@ -1,0 +1,12 @@
+commands:
+      ✔ sudo npm install -g eas-cli;
+      ✔ eas login:[
+           username:
+          "mint_snot", 
+           password:
+          "@mntman40"
+          ]
+          
+      ✔ eas build:configure 
+      ✔ eas build -p android --profile preview (build for apk) 
+      ✔ eas build --platform android (build for play store)

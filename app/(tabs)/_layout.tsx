@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import {   Tabs } from 'expo-router';
 import React from 'react';
 
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
@@ -9,15 +9,21 @@ export default function TabLayout() {
   const colorScheme = useColorScheme();
 
   return (
-    <Tabs
+
+    
+    
+     <Tabs
+      
       
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: true,
-        
-        
+        headerShown: false,
+      
         
       }}>
+      
+     
+      
       <Tabs.Screen
         
         name="setting"
@@ -29,25 +35,40 @@ export default function TabLayout() {
           ),
         }}
       />
+
       <Tabs.Screen
+        
         name="index"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+            <TabBarIcon  name={focused ? 'home' : 'home-outline'} color={color} />
           ),
         }}
       />
+
+     
       
       <Tabs.Screen
         name="profile"
         options={{
           title: 'profile',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
-          ),
+            <TabBarIcon    name={focused ? 'person' : 'person-outline'}  color={color} />
+          )
         }}
       />
-    </Tabs>
+
+
+</Tabs>
+
+   
+    
+    
+    
+
+
+
+   
   );
 }

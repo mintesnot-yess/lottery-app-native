@@ -1,30 +1,44 @@
-import { Button, StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { ThemedView } from "@/components/ThemedView";
 import { ThemedText } from "@/components/ThemedText";
 import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome } from "@expo/vector-icons";
+import { Link } from "expo-router";
 
 export default function App() {
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const now = new Date();
-      setCurrentTime(now.toLocaleTimeString());
+      const now = new Date()
+        .toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" })
+        .replace(/AM|PM/, "");
+
+      setCurrentTime(now);
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <View>
+    <SafeAreaView>
+      <ThemedView style={styles.header}>
+        <FontAwesome name="money" color={"#9E08B7"} size={17} />
+        <FontAwesome name="dollar" color={"#9E08B7"} size={15}>
+          100
+        </FontAwesome>
+      </ThemedView>
       <ScrollView style={styles.Container}>
         <LinearGradient colors={["#6100FF", "#DB00FF"]} style={styles.CardContainer}>
           <ThemedView style={styles.CardDetail}>
             <ThemedText style={{ color: "#fff", fontSize: 19 }}>Win up to </ThemedText>
-            <ThemedText style={{ paddingTop: 15, color: "#fff", fontSize: 40, fontWeight: "bold" }}>ET1000</ThemedText>
+            <ThemedText style={{ paddingTop: 15, color: "#fff", fontSize: 40, fontWeight: "bold" }}>{"$10000"}</ThemedText>
 
-            <Button title="play now" />
+            <Link href={"/games/Numbers"} style={styles.button}>
+              <ThemedText style={styles.text}> Play now</ThemedText>
+            </Link>
           </ThemedView>
           <ThemedView style={styles.CardCounting}>
             <LinearGradient colors={["#DB00FF", "#6100FF"]} style={styles.CirculeCounter}>
@@ -45,9 +59,9 @@ export default function App() {
                 style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
               />
 
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"$10000"}</ThemedText>
             </ThemedView>
             <ThemedView style={styles.WinnerList}>
               <Image
@@ -55,9 +69,9 @@ export default function App() {
                 style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
               />
 
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"$10000"}</ThemedText>
             </ThemedView>
             <ThemedView style={styles.WinnerList}>
               <Image
@@ -65,9 +79,9 @@ export default function App() {
                 style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
               />
 
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"$10000"}</ThemedText>
             </ThemedView>
             <ThemedView style={styles.WinnerList}>
               <Image
@@ -75,14 +89,14 @@ export default function App() {
                 style={{ width: 30, height: 30, borderRadius: 100, objectFit: "cover" }}
               />
 
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>Mintesnot</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 18 }}>{"02/09/24"}</ThemedText>
-              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 20 }}>10000</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>Mintesnot</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"02/09/24"}</ThemedText>
+              <ThemedText style={{ width: 100, overflow: "hidden", color: "#fff", fontSize: 16 }}>{"$10000"}</ThemedText>
             </ThemedView>
           </ThemedView>
         </LinearGradient>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -91,11 +105,26 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%"
   },
+
+  header: {
+    width: "93%",
+    marginHorizontal: "auto",
+
+    paddingVertical: 10,
+    display: "flex",
+    flexDirection: "row",
+
+    justifyContent: "space-between",
+    borderBottomWidth: 1,
+    borderBottomColor: "#cdcdcd",
+    backgroundColor: "transparent"
+  },
+
   CardContainer: {
     width: "95%",
     marginHorizontal: "auto",
     marginVertical: 20,
-    paddingVertical: 20,
+    paddingVertical: 25,
 
     borderRadius: 10,
     display: "flex",
@@ -114,7 +143,7 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 32,
     borderRadius: 10,
     backgroundColor: "#fff"
@@ -156,11 +185,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 5,
-    padding: 5,
+    padding: 2,
 
     borderRadius: 5,
     backgroundColor: "transparent",
-    borderWidth: 1,
-    borderColor: "#ffffff61"
+    borderTopWidth: 1,
+    borderTopColor: "#ffffff61"
   }
 });

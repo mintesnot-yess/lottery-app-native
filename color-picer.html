@@ -1,0 +1,16 @@
+<input type="text" value="" oninput="calc(this.value)">
+
+<div class="showResult"></div>
+<script>
+
+
+    function calc(calcNums) {
+        console.log(Number(calcNums));
+        document.querySelector(".showResult").innerHTML = calcNums;
+
+
+
+    }
+
+    //    calc(calnum.split(","))
+</script>

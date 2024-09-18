@@ -4,7 +4,7 @@
     "slug": "lottery-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/lottery-icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
@@ -17,23 +17,27 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/lottery-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mint_snot.lotteryapp"
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/lottery-icon.png"
     },
     "plugins": [
       "expo-router",
       "expo-font"
-      
-      
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a59a771a-773f-4489-a273-4735eb1c75b8"
+      }
     }
   }
 }
